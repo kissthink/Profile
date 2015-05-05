@@ -19,12 +19,8 @@ alias leafpad='/usr/bin/env leafpad --codeset=utf8'
 # }
 # cc {
 # 提供cc99, cxx11 等编译小程序的指令
-alias gcc='/usr/bin/env gcc -Wall -fdiagnostics-color=auto'
-alias cc='gcc'
-alias c99='cc -std=c99'
-alias g++='/usr/bin/env g++ -Wall -fdiagnostics-color=auto'
-alias cxx='g++'
-alias cxx11='cxx -std=c++11'
+alias c99='/usr/bin/env gcc -Wall -std=c99 -fdiagnostics-color=auto'
+alias cxx11='/usr/bin/env g++ -Wall -std=c++11 -fdiagnostics-color=auto'
 # }
 # ls {
 alias ls='/usr/bin/env ls -hF --color=auto'

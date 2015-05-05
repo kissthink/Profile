@@ -73,7 +73,7 @@ type systemctl >/dev/null 2>&1 && plugins+=systemd
 # =========================
 DISABLE_AUTO_UPDATE="true"
 if [[ -w "$ZSH/.git" ]]; then
-  alias oh-my-zsh-upgrade="cd $ZSH/tools; zsh $ZSH/tools/upgrade.sh; cd $OLDPWD"
+  alias oh-my-zsh-upgrade="cd $ZSH/tools; zsh $ZSH/tools/upgrade.sh;"
 fi
 
 # ========================

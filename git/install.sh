@@ -2,12 +2,9 @@
 
 suffix=$(date +%s)
 [[ -z $curdir ]] && curdir=$(dirname $(readlink -f $0))
-src="$curdir/.toprc"
-dest="$HOME/.toprc"
+src="$curdir/.gitconfig"
+dest="$HOME/.gitconfig"
 
 [[ -f "$dest" || -L "$dest" ]] && mv "$dest" "${dest}.${suffix}.bak"
-
-echo -ne "配置top...\t"
 ln -s "$src" "$dest"
-echo '完成'
 

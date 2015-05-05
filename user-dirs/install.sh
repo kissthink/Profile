@@ -2,20 +2,24 @@
 
 suffix=$(date +%s)
 [[ -z $curdir ]] && curdir=$(dirname $(readlink -f $0))
+src_dirs="$curdir/user-dirs.dirs"
+src_locale="$curdir/user-dirs.locale"
+dest_dirs="$HOME/.config/user-dirs.dirs"
+dest_locale="$HOME/.config/user-dirs.locale"
 
-if [[ -d "$HOME/.config" ]]; then
-  if [[ -f "$HOME/.config/user-dirs.dirs" || -L "$HOME/.config/user-dirs.dirs" ]]; then
-    mv "$HOME/.config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs.${suffix}.bak"
+if [[ -d "$(dirname $dest_dirs)" ]]; then
+  if [[ -f "$dest_dirs" || -L "$dest_dirs" ]]; then
+    mv "$dest_dirs" "$dest_dirs.${suffix}.bak"
   fi
-  if [[ -f "$HOME/.config/user-dirs.locale" || -L "$HOME/.config/user-dirs.locale" ]]; then
-    mv "$HOME/.config/user-dirs.locale" "$HOME/.config/user-dirs.locale.${suffix}.bak"
+  if [[ -f "$dest_locale" || -L "$dest_locale" ]]; then
+    mv "$dest_locale" "$dest_locale.${suffix}.bak"
   fi
 else
-  mkdir "$HOME/.config"
+  mkdir "$(dirname $dest_dirs)"
 fi
 
 echo -ne "配置user-dirs...\t"
-ln -s "$curdir/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
-ln -s "$curdir/user-dirs.locale" "$HOME/.config/user-dirs.locale"
+ln -s "$src_dirs" "$dest_dirs"
+ln -s "$src_locale" "$dest_locale"
 echo '完成'
 

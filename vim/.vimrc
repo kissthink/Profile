@@ -171,7 +171,7 @@ let g:ycm_key_invoke_completion = '<C-N>'
 let g:ycm_semantic_triggers = {
   \     'c' : ['->', '.', ' ', '(', '[', '&'],
   \     'cpp,objcpp' : ['->', '.', ' ', '(', '[', '&', '::'],
-  \     'perl' : ['->', '::'],
+  \     'perl' : ['->', '::', ' '],
   \     'php' : ['->', '::', '.'],
   \     'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
   \     'ruby' : ['.', '::'],
@@ -368,9 +368,6 @@ au FileType asm set filetype=nasm
 " ==========================
 " GNU 缩进风格
 " ==========================
-" 如果不喜欢GNU 缩进风格
-" 请注释掉函数后的au 一行
-" ==========================
 function! GnuIndent ()
   let b:did_ftplugin = 1
   setlocal cindent
@@ -382,4 +379,13 @@ function! GnuIndent ()
   set expandtab smarttab autoindent smartindent
 endfunction
 au FileType c,h,cpp,cc,hpp call GnuIndent ()
+
+" ==========================
+" Makefile tab 设置
+" ==========================
+function! MakefileIndent ()
+  setlocal noexpandtab smarttab
+  setlocal tabstop=2 shiftwidth=2 softtabstop=2 backspace=2
+endfunction
+au FileType makefile call MakefileIndent ()
 

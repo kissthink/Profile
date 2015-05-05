@@ -2,15 +2,18 @@
 
 suffix=$(date +%s)
 [[ -z $curdir ]] && curdir=$(dirname $(readlink -f $0))
+src="$curdir/config"
+dest="$HOME/.config/terminator/config"
 
-if [[ -d "$HOME/.config/terminator" ]]; then
-  if [[ -f "$HOME/.config/terminator/config" || -L "$HOME/.config/terminator/config" ]]; then
-    mv "$HOME/.config/terminator/config" "$HOME/.config/terminator/config.$suffix.bak"
+if [[ -d "$(dirname $dest)" ]]; then
+  if [[ -f "$dest" || -L "$dest" ]]; then
+    mv "$dest" "${dest}.${suffix}.bak"
   fi
 else
-  mkdir "$HOME/.config/terminator"
+  mkdir "$(dirname $dest)"
 fi
 
 echo -ne "配置terminator...\t"
-ln -sf "$curdir/config" "$HOME/.config/terminator/config"
+ln -sf "$src" "$dest"
 echo '完成'
+

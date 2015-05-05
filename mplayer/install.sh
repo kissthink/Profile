@@ -2,16 +2,18 @@
 
 suffix=$(date +%s)
 [[ -z $curdir ]] && curdir=$(dirname $(readlink -f $0))
+src="$curdir/config"
+dest="$HOME/.mplayer/config"
 
 if [[ -d "$HOME/.mplayer" ]]; then
-  if [[ -f "$HOME/.mplayer/config" || -L "$HOME/.mplayer/config" ]]; then
-    mv "$HOME/.mplayer/config" "$HOME/.mplayer/config.${suffix}.bak"
+  if [[ -f "$dest" || -L "$dest" ]]; then
+    mv "$dest" "${dest}.${suffix}.bak"
   fi
 else
   mkdir "$HOME/.mplayer"
 fi
 
 echo -ne "配置mplayer...\t"
-ln -s "$curdir/config" "$HOME/.mplayer/config"
+ln -s "$src" "$dest"
 echo '完成'
 

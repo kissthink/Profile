@@ -1,12 +1,23 @@
+v2015-05-05
+  * all:
+      修改了各自的install.sh 使之更加清晰。
+  * vim:
+      Makefile 中单独设置tab 缩进。
+  * git:
+      增加了git 配置。
+  * zsh:
+      移除了gcc/g++/cc/cxx 的alias。
+
 v2015-05-02
   * vim:
       增加了插件vim-gitgutter。
       修正了<C-V> 可能会转换到nopaste 模式的错误。
       修正了<C-V> 在插入模式时粘贴后光标可能会移位的错误。
-      移除了插件AuthorInfo
+      移除了插件AuthorInfo。
   * nano:
-      修改了中的按键映射。
-      更新了语法高亮文件。
+      修改了按键映射。
+      更新了语法高亮配置文件。
+      更改了nanorc 中高亮配置，不再支持旧版。
   * zsh:
       现在所有的发行版上都默认加载alias.zsh。
 
